@@ -3,12 +3,13 @@ title: "Statistical report for ACASA-TAVI"
 author: "C. Cunen"
 date: "`r format(Sys.Date(), '%d %B %Y')`"
 output: 
-  bookdown::html_document2:
-    toc: true
-    toc_depth: '2'
-  #word_document:
+  #bookdown::html_document2:
   #  toc: true
   #  toc_depth: '2'
+  word_document:
+    number_sections: true
+    toc: true
+    toc_depth: '2'
   #pdf_document:
   #  toc: true
   #  toc_depth: '2'
@@ -223,6 +224,7 @@ tt %>%
 
 ## Vital signs and physical characteristics at baseline
 
+
 ```{r}
 indent <- c(10:12,14:16,18:21)
 notindent <- which(!1:21 %in% indent)
@@ -240,6 +242,7 @@ tt %>%
   set_caption(caption = "Vital signs and physical characteristics at baseline.",
               align_with_table = FALSE)
 ```
+
 
 ## Clinical chemistry and hematology at baseline
 
@@ -402,17 +405,16 @@ tt %>%
 Out of the `r saf_events$total` safety events, `r saf_events$saf_switch` happen in participants that also switch between the treatments at some point. Among these  `r saf_events$saf_switch` participants:  `r saf_events$before` experience the safety event before switching, while  `r saf_events$after` experience the safety event after their first switch.
 
 
-```{r switching_safety, echo = FALSE, fig.path="markdown_figs/" , fig.width = 12, fig.height=8, fig.cap="Timing of safety events and/or treatment deviations. Some participants switch between drugs multiple times and in those cases the figure gives the timing of the first switch."}
+```{r switchingSafetyfig, echo = FALSE, fig.path="markdown_figs/" , fig.width = 12, fig.height=8, fig.cap="Timing of safety events and/or treatment deviations. Some participants switch between drugs multiple times and in those cases the figure gives the timing of the first switch."}
 load("data/res/prim_saf_fig.RData")
 selected
 ```
+
 
 In this figure there are `r saf_events$n_dev_plus_saf` participants, including `r saf_events$total` participants experiencing the safety event, and `r saf_events$n_deviations` participants with treatment deviations (`r saf_events$saf_switch` participants are part of both groups).
 
 
 ### Adjusted analysis with multiple imputation, treatment policy strategy
-
-> Should I show diagnostics of the imputation?
 
 Covariates in the analysis model: treatment, age, sex, cad, prev_stroke, diabetes, hypertension, GFR
 
@@ -484,6 +486,7 @@ tt %>%
   set_caption(caption = "Co-primary efficacy: results of primary analysis and 3 sensitivity analyses. Estimated average risk ratios, along with corresponding confidence intervals. MI stands for Mulitple Imputation.",align_with_table = FALSE)
 ```
 
+
 ```{r}
 eff_sens_diff <- rbind(halt_main_diff[,c("contrast","estimate","conf.low","conf.high")],
                        halt_sens1_diff[,c("contrast","estimate","conf.low","conf.high")],
@@ -497,6 +500,7 @@ tt %>%
   autofit() %>%
   set_caption(caption = "Co-primary efficacy: results of primary analysis and 3 sensitivity analyses. Estimated average risk differences, along with corresponding confidence intervals. MI stands for Mulitple Imputation.",align_with_table = FALSE)
 ```
+
 
 
 
@@ -573,9 +577,6 @@ tt %>%
 ```
 
 
-## Safety composite: hypothetical strategy for treatment deviations
-
-to do
 
 ## Safety compositet: composite strategy for treatment deviations
 
@@ -1067,7 +1068,6 @@ tt %>%
 
 # Additional safety analysis
 
-> Which numbers and tables do you want to see here? The two first tables are kind of redundant, but the question is whether one should require that the AE is possibly related to study medication or not.
 
 ## Overview of adverse events, serious adverse events and suspected unexpected serious adverse reaction
 

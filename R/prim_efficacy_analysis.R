@@ -171,13 +171,14 @@ haltplot <- ggplot(halt_preds, aes(x = ran_trt, y = 100*estimate, fill = ran_trt
          title="HALT")+
   geom_text(
     aes(label = paste0(round(100*estimate),"%"),y=100*conf.high+2),
-    size  = 4
+    size  = 6
   ) +
   theme_bw() +
   theme(legend.position = "none", # no legend
         panel.border    = element_blank(),
         plot.background = element_blank(),
-        plot.title = element_text(hjust = 0.5,vjust=1, face = "bold"))  +
+        plot.title = element_text(hjust = 0.5,vjust=1, face = "bold"),
+        text = element_text(size = 15))  +
   scale_fill_manual(values = c(
     DOAC = "#0571b0",
     ASA = "#d95f02"

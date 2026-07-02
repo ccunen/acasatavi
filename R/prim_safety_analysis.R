@@ -160,11 +160,11 @@ safetyplot <- ggplot(safety_main_diff, aes(y=1, x = 100*estimate)) +
   geom_text(
     aes(label = paste0("95% CI ",round(100*conf.low,1)," to ",
                        round(100*conf.high,1), " pp"),y=1),
-    size  = 4,vjust=2,colour="#008837"
+    size  = 6,vjust=2,colour="#008837"
   ) +
   geom_text(
     aes(label = paste0(round(100*estimate,1)," pp"),y=1),
-    size  = 4,vjust=-2,colour="#008837"
+    size  = 6,vjust=-2,colour="#008837"
   ) +
   geom_text(
     aes(label = "No difference (0)",y=1.7,x=0),
@@ -179,13 +179,14 @@ safetyplot <- ggplot(safety_main_diff, aes(y=1, x = 100*estimate)) +
   theme(legend.position = "none", # no legend
         panel.border    = element_blank(),
         plot.background = element_blank(),
-        plot.title = element_text(hjust = 0.5,vjust=7, face = "bold"),
+        plot.title = element_text(hjust = 0.5,vjust=5, face = "bold"),
         axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
         panel.grid.major.y = element_blank(),
         panel.grid.minor.y   = element_blank(),
-        plot.margin        = margin(20, 5.5, 5.5, 5.5))  
+        plot.margin        = margin(20, 5.5, 5.5, 5.5),
+        text = element_text(size = 15))  
 
 
 ### Adjusted analysis - complete case
