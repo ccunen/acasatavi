@@ -6,7 +6,7 @@ output:
   bookdown::html_document2:
     toc: true
     toc_depth: '2'
-  #word_document:
+ # word_document:
   #  number_sections: true
   #  toc: true
   #  toc_depth: '2'
@@ -539,13 +539,13 @@ ALT, triglycerides, albumin, and bilirubin.
 ```{r}
 load("data/res/prim_eff_supp_tab.RData")
 halt_supp_ratio$contrast <- "DOAC / ASA"
-tt <- flextable(halt_supp_ratio[,c("contrast","estimate","p.value",
+tt <- flextable(halt_supp_ratio[,c("contrast","estimate",
                             "conf.low","conf.high")])
 tt %>%
   set_header_labels(values=list(conf.low="95CI_low",conf.high="95CI_high")) %>% 
-  colformat_double(j = 2:5, digits = 3) %>%
+  colformat_double(j = 2:4, digits = 3) %>%
   autofit() %>%
-  set_caption(caption = "Estimated average unadjusted risk ratio, along with corresponding p-value and confidence interval.",align_with_table = FALSE)
+  set_caption(caption = "Estimated average unadjusted risk ratio, along with corresponding confidence interval.",align_with_table = FALSE)
 ```
 
 ```{r}
@@ -559,7 +559,7 @@ tt %>%
 
 
 
-## Safety compositet: composite strategy for treatment deviations
+## Safety composite: composite strategy for treatment deviations
 
 ```{r}
 load("data/res/prim_saf_supp2_tab.RData")
@@ -578,13 +578,13 @@ tt %>%
 
 ```{r}
 safety_supp2_ratio$contrast <- "DOAC / ASA"
-tt <- flextable(safety_supp2_ratio[,c("contrast","estimate","p.value",
+tt <- flextable(safety_supp2_ratio[,c("contrast","estimate",
                             "conf.low","conf.high")])
 tt %>%
   set_header_labels(values=list(conf.low="95CI_low",conf.high="95CI_high")) %>% 
-  colformat_double(j = 2:5, digits = 3) %>%
+  colformat_double(j = 2:4, digits = 3) %>%
   autofit() %>%
-  set_caption(caption = "Estimated average adjusted risk ratio, along with corresponding p-value and confidence interval.",align_with_table = FALSE)
+  set_caption(caption = "Estimated average adjusted risk ratio, along with corresponding confidence interval.",align_with_table = FALSE)
 ```
 
 
@@ -607,13 +607,13 @@ tt %>%
 
 ```{r}
 safety_supp3_ratio$contrast <- "DOAC / ASA"
-tt <- flextable(safety_supp3_ratio[,c("contrast","estimate","p.value",
+tt <- flextable(safety_supp3_ratio[,c("contrast","estimate",
                             "conf.low","conf.high")])
 tt %>%
   set_header_labels(values=list(conf.low="95CI_low",conf.high="95CI_high")) %>% 
-  colformat_double(j = 2:5, digits = 3) %>%
+  colformat_double(j = 2:4, digits = 3) %>%
   autofit() %>%
-  set_caption(caption = "Estimated average adjusted risk ratio, along with corresponding p-value and confidence interval.",align_with_table = FALSE)
+  set_caption(caption = "Estimated average adjusted risk ratio, along with corresponding confidence interval.",align_with_table = FALSE)
 ```
 
 
